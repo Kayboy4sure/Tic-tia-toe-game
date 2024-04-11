@@ -8,7 +8,7 @@ var score_board = {"X":0, "O":0}
 
 function reset() {
     if (end) {
-        if (!board.includes(null)){
+        if (result() == "D"){
 
         } else {
             score_board[onturn]++;
@@ -61,31 +61,31 @@ function check(position) {
 function result() {
     if (board[0] == onturn && board[1] == onturn && board[2] == onturn) {
         console.log ("you win");
-        return onturn + "'s win the game";
+        return onturn;
     } else if (board[3] == onturn && board[4] == onturn && board[5] == onturn) {
         console.log ("you win");
-        return onturn + "'s win the game";
+        return onturn;
     } else if (board[6] == onturn && board[7] == onturn && board[8] == onturn) {
         console.log ("you win");
-        return onturn + "'s win the game";
+        return onturn;
     } else if (board[0] == onturn && board[3] == onturn && board[6] == onturn) {
         console.log ("you win");
-        return onturn + "'s win the game";
+        return onturn;
     } else if (board[1] == onturn && board[4] == onturn && board[7] == onturn) {
         console.log ("you win");
-        return onturn + "'s win the game";
+        return onturn;
     } else if (board[2] == onturn && board[5] == onturn && board[8] == onturn) {
         console.log ("you win");
-        return onturn + "'s win the game";
+        return onturn;
     } else if (board[0] == onturn && board[4] == onturn && board[8] == onturn) {
         console.log ("you win");
-        return onturn + "'s win the game";
+        return onturn;
     } else if (board[2] == onturn && board[4] == onturn && board[6] == onturn) {
         console.log ("you win");
-        return onturn + "'s win the game";
+        return onturn;
     } else if (!board.includes(null)) {
         console.log ("you draw");
-        return "It's a draw the game";
+        return "D";
     } 
 }
 
@@ -97,6 +97,11 @@ function body(position, id) {
         document.getElementById(id).appendChild(text);
         board[position] = onturn;
         if (res = result()) {
+            if ("D" == res) {
+                res = "It's a draw the game";
+            } else {
+                res = onturn + "'s win the game";
+            }
             document.getElementById("turns").innerHTML = res;
             document.getElementById("output").innerHTML = "Do you still want to play again:";
             end = true;
