@@ -1,8 +1,8 @@
 var board = [null,null,null,null,null,null,null,null,null];
 const ids = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
-const player = "X";
-const computer = "O";
-var onturn = player;
+const player_1 = "X";
+const player_2 = "O";
+var onturn = player_1;
 var end = false;
 var score_board = {"X":0, "O":0}
 
@@ -21,20 +21,20 @@ function reset() {
             board[index] = null;
             document.getElementById(ids[index]).innerHTML="";
         }
-        if (onturn == computer) {
-            onturn == player;
+        if (onturn == player_2) {
+            onturn == player_1;
         }
 
     }
 }
 
 function turn() {
-    if (onturn == player ) {
-        onturn = computer; 
-        return "computer turn";
+    if (onturn == player_1 ) {
+        onturn = player_2; 
+        return "player_2 turn";
     } else {
-        onturn = player;
-        return "player turn";
+        onturn = player_1;
+        return "player_1 turn";
     }
 }
 
